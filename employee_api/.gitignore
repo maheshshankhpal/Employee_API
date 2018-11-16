@@ -1,0 +1,8 @@
+# Visual Studio Code
+.vscode
+bin
+obj
+wwwroot
+
+# Visual Studio 2015
+.vs/
