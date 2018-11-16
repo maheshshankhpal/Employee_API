@@ -12,12 +12,12 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using DynamicReportAPI.Utility;
+using employee_api.Utility;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
-using DynamicReportAPI.Hubs;
+using employee_api.Hubs;
 
-namespace DynamicReportAPI
+namespace employee_api
 {
     public class Startup
     {

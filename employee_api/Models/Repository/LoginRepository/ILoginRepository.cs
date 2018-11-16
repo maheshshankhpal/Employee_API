@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Data;
 
-namespace DynamicReportAPI.Models.Repository.LoginRepository
+namespace employee_api.Models.Repository.LoginRepository
 {
    public interface ILoginRepository
     {

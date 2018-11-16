@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace DynamicReportAPI.Utility
+namespace employee_api.Utility
 {
     public class RSAKeyHelper
     {

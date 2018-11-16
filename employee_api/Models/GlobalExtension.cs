@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 
-namespace DynamicReportAPI.Models
+namespace employee_api.Models
 {
     public static class GlobalExtension
     {

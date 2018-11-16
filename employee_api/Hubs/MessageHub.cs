@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace DynamicReportAPI.Hubs
+namespace employee_api.Hubs
 {
     public class joinUserDetails
     {

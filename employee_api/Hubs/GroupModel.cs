@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DynamicReportAPI.Hubs
+namespace employee_api.Hubs
 {
     public static class GroupModel
     {

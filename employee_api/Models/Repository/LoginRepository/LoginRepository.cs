@@ -4,7 +4,7 @@ using System.Data;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 
-namespace DynamicReportAPI.Models.Repository.LoginRepository
+namespace employee_api.Models.Repository.LoginRepository
 {
     public class LoginRepository : ILoginRepository
     {

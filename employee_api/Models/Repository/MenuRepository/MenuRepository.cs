@@ -1,7 +1,7 @@
 using System.Data;
 using Microsoft.Extensions.Configuration;
 
-namespace DynamicReportAPI.Models.Repository.ReportRepository {
+namespace employee_api.Models.Repository.ReportRepository {
     public class MenuRepository {
         public IConfiguration _iconfiguration;
         MenuModel _MenuModel;

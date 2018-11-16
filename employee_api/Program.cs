@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace DynamicReportAPI {
+namespace employee_api {
     public class Program {
         public static void Main (string[] args) {
             var webHost = new WebHostBuilder ()

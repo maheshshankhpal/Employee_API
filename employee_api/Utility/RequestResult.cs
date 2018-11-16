@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DynamicReportAPI.Utility
+namespace employee_api.Utility
 {
 
     public class UserStatus

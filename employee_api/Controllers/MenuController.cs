@@ -1,11 +1,11 @@
-using DynamicReportAPI.Models;
-using DynamicReportAPI.Models.Repository.ReportRepository;
-using DynamicReportAPI.Utility;
+using employee_api.Models;
+using employee_api.Models.Repository.ReportRepository;
+using employee_api.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
-namespace DynamicReportAPI.Controllers {
+namespace employee_api.Controllers {
     [Route ("api/[controller]")]
     public class MenuController : Controller {
 

@@ -1,4 +1,4 @@
-﻿using DynamicReportAPI.Utility;
+﻿using employee_api.Utility;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,16 +11,16 @@ using System;
 using System.Text;
 using System.IO;
 using System.Security.Cryptography;
-using DynamicReportAPI.Models;
+using employee_api.Models;
 using Newtonsoft.Json.Linq;
-using DynamicReportAPI.Models.Repository.LoginRepository;
+using employee_api.Models.Repository.LoginRepository;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data;
-using DynamicReportAPI.Hubs;
+using employee_api.Hubs;
 
-namespace DynamicReportAPI.Controllers
+namespace employee_api.Controllers
 {
     [Route("api/[controller]")]
     public class TokenAuthController : Controller
@@ -69,25 +69,9 @@ namespace DynamicReportAPI.Controllers
                 var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
                 var token = GenerateToken(existUser, expiresIn);
 
-                var strGroups = UserData.Tables["UserLogin"].Rows[0]["DeptGroupCode"].ToString();
-                var userGroups = strGroups.Split(',');
-                var userFullName = UserData.Tables["UserLogin"].Rows[0].ItemArray[2];
-                GroupModel.UserID = existUser.Username;
-                GroupModel.grouplist = new List<GroupsList>();
-                List<GroupsList> grplist = new List<GroupsList>();
-
-                foreach (var grpName in userGroups)
-                {
-                    grplist.Add(new GroupsList()
-                    {
-                        GroupName = grpName
-                    });
-                }
-
-                if (grplist.Count() > 1)
-                {
-                    GroupModel.grouplist = grplist;
-                }
+               // var strGroups = UserData.Tables["UserLogin"].Rows[0]["DeptGroupCode"].ToString();
+               // var userGroups = strGroups.Split(',');
+                var userFullName = UserData.Tables["UserLogin"].Rows[0]["UserName"];
 
                 return Json(new RequestResult
                 {
@@ -119,25 +103,26 @@ namespace DynamicReportAPI.Controllers
         {
             UserStatus userLoginstatus = new UserStatus();
 
-            var IsSUSPEND = userData.Tables["UserLogin"].Rows[0]["SUSPEND"].ToString();
-            var IsExpiredUser = userData.Tables["UserLogin"].Rows[0]["ExpiredUser"].ToString();
-            var isActivate = userData.Tables["UserLogin"].Rows[0]["Activate"].ToString();
+            bool IsSUSPEND = Convert.ToBoolean(userData.Tables["UserLogin"].Rows[0]["SUSPEND"]);
+            bool IsExpiredUser = Convert.ToBoolean(userData.Tables["UserLogin"].Rows[0]["ExpiredUser"]);
+            bool isActivate = Convert.ToBoolean(userData.Tables["UserLogin"].Rows[0]["Activate"]);
+            
             var IsLoginPassword = userData.Tables["UserLogin"].Rows[0]["LoginPassword"].ToString();
 
 
-            if (IsSUSPEND == "SUSPEND")
+            if (IsSUSPEND)
             {
                 userLoginstatus.IsLogin = false;
                 userLoginstatus.Msg = "User has been Suspended";
                 return userLoginstatus;
             }
-            else if (IsExpiredUser == "ExpiredUser")
+            else if (IsExpiredUser)
             {
                 userLoginstatus.IsLogin = false;
                 userLoginstatus.Msg = "User has been Expired";
                 return userLoginstatus;
             }
-            else if (isActivate != "Y")
+            else if (!isActivate)
             {
                 userLoginstatus.IsLogin = false;
                 userLoginstatus.Msg = "User is Not Active";

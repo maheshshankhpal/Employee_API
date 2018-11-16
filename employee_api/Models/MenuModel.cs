@@ -6,7 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Newtonsoft.Json.Linq;
 
-namespace DynamicReportAPI.Models {
+namespace employee_api.Models {
     public class MenuModel {
         public IConfiguration _iconfiguration;
        
@@ -17,11 +17,11 @@ namespace DynamicReportAPI.Models {
 
 
         public DataSet GetSideMenuList () {
-            string Connection = _iconfiguration.GetValue<string> ("ConnectionStrings:Connection_SLBC");
+            string Connection = _iconfiguration.GetValue<string> ("ConnectionStrings");
 
             Database database;
             database = new SqlDatabase (Connection);
-            DbCommand command = database.GetStoredProcCommand ("SysCrisMacMenu_SLBC");
+            DbCommand command = database.GetStoredProcCommand ("GetMenuList");
             DataSet ds = new DataSet ();
             using (command) {
                 try {

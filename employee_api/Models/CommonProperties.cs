@@ -1,7 +1,7 @@
 
 using System;
 
-namespace DynamicReportAPI.Models
+namespace employee_api.Models
 {
      public class CommonProperties 
     {

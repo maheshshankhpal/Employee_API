@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
 
-namespace DynamicReportAPI.Utility
+namespace employee_api.Utility
 {
     public class TokenAuthOption
     {

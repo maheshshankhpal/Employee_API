@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
-namespace DynamicReportAPI.Models
+namespace employee_api.Models
 {
   public  class LoginModel : CommonProperties
     {
@@ -26,11 +26,11 @@ namespace DynamicReportAPI.Models
         public string AuthSuccess { get; set; }
         public DataSet Select_LoginDetails()
         {
-            string Connection = _iconfiguration.GetValue<string>("ConnectionStrings:LiveConnection");
+            string Connection = _iconfiguration.GetValue<string>("ConnectionStrings");
           
             Database database;
             database = new SqlDatabase(Connection);
-            DbCommand command = database.GetStoredProcCommand("UserAuthentication_AD");
+            DbCommand command = database.GetStoredProcCommand("UserAuthentication");
             DataSet ds = new DataSet();
             using (command)
             {
@@ -38,9 +38,7 @@ namespace DynamicReportAPI.Models
                 {
                     database.AddInParameter(command, "@UserLoginID", System.Data.DbType.String, userName);
                     database.AddInParameter(command, "@LoginPassword", System.Data.DbType.String, Password);
-                    database.AddInParameter(command, "@authType", System.Data.DbType.String, authType);       //Auth Type can be AD or DB
-                    database.AddInParameter(command, "@AuthSuccess", System.Data.DbType.String, AuthSuccess); //Added to Know AD login is Successful or Not
-
+                    
                     ds = database.ExecuteDataSet(command);
                     return ds;
                 }
